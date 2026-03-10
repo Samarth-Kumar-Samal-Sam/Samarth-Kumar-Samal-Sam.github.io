@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Samarth Kumar Samal | Data Science & Machine Learning Portfolio</title>
+  <meta
+    name="description"
+    content="Portfolio of Samarth Kumar Samal — M.S. Data Science student at the University of Minnesota focused on machine learning, NLP, predictive analytics, and applied AI."
+  />
+  <meta property="og:title" content="Samarth Kumar Samal | Data Science & Machine Learning Portfolio" />
+  <meta
+    property="og:description"
+    content="M.S. Data Science student focused on machine learning, NLP, predictive analytics, and applied AI."
+  />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #eef2ff;
+      --muted: #b6c0e0;
+      --accent: #7c9cff;
+      --accent-2: #9b8cff;
+      --chip: rgba(124, 156, 255, 0.14);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      --maxw: 1180px;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .animated-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(124, 156, 255, 0.10), transparent 20%),
+        radial-gradient(circle at 85% 15%, rgba(155, 140, 255, 0.10), transparent 20%),
+        linear-gradient(180deg, #09101f 0%, #0b1020 100%);
+    }
+
+    #bg-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .bg-gradient {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.22;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      z-index: 0;
+    }
+
+    .bg-gradient-1 {
+      width: 420px;
+      height: 420px;
+      top: 8%;
+      left: 6%;
+      background: #7c9cff;
+      animation: floatBlob1 10s infinite;
+    }
+
+    .bg-gradient-2 {
+      width: 340px;
+      height: 340px;
+      top: 58%;
+      right: 10%;
+      background: #9b8cff;
+      animation: floatBlob2 12s infinite;
+    }
+
+    .bg-gradient-3 {
+      width: 280px;
+      height: 280px;
+      bottom: 6%;
+      left: 35%;
+      background: #5fd3ff;
+      animation: floatBlob3 14s infinite;
+    }
+
+    @keyframes floatBlob1 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, 30px) scale(1.08); }
+    }
+
+    @keyframes floatBlob2 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(-45px, -20px) scale(1.12); }
+    }
+
+    @keyframes floatBlob3 {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(20px, -35px) scale(1.1); }
+    }
+
+    .container {
+      width: min(var(--maxw), calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(7, 10, 22, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.95rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 20px rgba(124, 156, 255, 0.65);
+    }
+
+    .menu {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .menu a {
+      color: var(--muted);
+      font-size: 0.96rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .menu a:hover,
+    .menu a.active {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .menu a:focus-visible,
+    .btn:focus-visible,
+    .pill-link:focus-visible,
+    .scroll-top:focus-visible {
+      outline: 2px solid rgba(180, 197, 255, 0.9);
+      outline-offset: 3px;
+    }
+
+    section {
+      padding: 4.5rem 0;
+    }
+
+    .hero {
+      padding: 5.5rem 0 4rem;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--muted);
+      font-size: 0.94rem;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.7rem);
+      line-height: 1.05;
+      margin: 0 0 0.9rem;
+      letter-spacing: -0.03em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff, #aac0ff 45%, #c8bbff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: #d7def8;
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin: 0 0 1.6rem;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.6rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.2rem;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 10px 30px rgba(124, 156, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .hero-card {
+      padding: 1.5rem;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .profile-card {
+      text-align: center;
+    }
+
+    .profile-image-wrap {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      padding: 6px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 14px 40px rgba(124, 156, 255, 0.28);
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      border: 4px solid rgba(11, 16, 32, 0.95);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .stat h3 {
+      margin: 0 0 0.2rem;
+      font-size: 1.65rem;
+    }
+
+    .stat p,
+    .tiny {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.85rem, 3vw, 2.6rem);
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 70ch;
+      margin: 0 0 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .about-grid,
+    .research-grid,
+    .contact-grid,
+    .experience-grid,
+    .leadership-grid,
+    .blog-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .chip-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.8rem;
+    }
+
+    .chip {
+      padding: 0.55rem 0.8rem;
+      border-radius: 999px;
+      background: var(--chip);
+      border: 1px solid rgba(124, 156, 255, 0.25);
+      color: #dbe4ff;
+      font-size: 0.92rem;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .card h3 {
+      margin: 0 0 0.55rem;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0.45rem 0 0;
+      color: var(--muted);
+    }
+
+    .timeline-meta,
+    .project-links,
+    .contact-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: 0.9rem;
+    }
+
+    .pill-link {
+      padding: 0.5rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #e5ebff;
+      font-size: 0.92rem;
+      transition: 0.2s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .pill-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      min-height: 100%;
+    }
+
+    .project-card .project-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .project-card .project-num {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124, 156, 255, 0.2), rgba(155, 140, 255, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 700;
+      color: #dfe6ff;
+      flex-shrink: 0;
+    }
+
+    .project-card ul,
+    .simple-list {
+      margin: 0.35rem 0 0;
+      padding-left: 1.15rem;
+      color: var(--muted);
+    }
+
+    .simple-list li,
+    .project-card li {
+      margin: 0.35rem 0;
+    }
+
+    .mini-note {
+      color: #dbe3ff;
+      font-size: 0.95rem;
+      margin-top: 0.4rem;
+    }
+
+    .resume-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .scroll-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      box-shadow: 0 12px 30px rgba(124, 156, 255, 0.35);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: 0.25s ease;
+      z-index: 60;
+    }
+
+    .scroll-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+      margin: 1rem 0 0;
+    }
+
+    .nav,
+    .hero,
+    .card,
+    .hero-card,
+    main,
+    section {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .bg-gradient,
+      .btn,
+      .scroll-top {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      #bg-canvas {
+        display: none;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .skills-grid,
+      .about-grid,
+      .research-grid,
+      .contact-grid,
+      .experience-grid,
+      .leadership-grid,
+      .blog-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 4.2rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--maxw), calc(100% - 1.15rem));
+      }
+
+      .menu {
+        display: none;
+      }
+
+      section {
+        padding: 3.4rem 0;
+      }
+
+      .hero-card {
+        padding: 1.15rem;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-image-wrap {
+        width: 180px;
+        height: 180px;
+      }
+
+      .project-card .project-title-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="animated-bg" aria-hidden="true">
+    <canvas id="bg-canvas"></canvas>
+    <div class="bg-gradient bg-gradient-1"></div>
+    <div class="bg-gradient bg-gradient-2"></div>
+    <div class="bg-gradient bg-gradient-3"></div>
+  </div>
+
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="Go to homepage section">
+        <span class="brand-dot"></span>
+        <span>Samarth Kumar Samal</span>
+      </a>
+      <div class="menu" id="menu">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#research">Academic Focus</a>
+        <a href="#experience">Experience</a>
+        <a href="#leadership">Leadership</a>
+        <a href="#blog">Technical Writing</a>
+        <a href="#resume">Resume</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">M.S. in Data Science · University of Minnesota Twin Cities</div>
+          <h1><span class="gradient-text">Samarth Kumar Samal</span></h1>
+          <div class="tagline">Graduate Student in Data Science | Machine Learning, NLP, and Predictive Analytics</div>
+          <p>
+            I am a Data Science graduate student with prior software engineering experience building reliable systems in enterprise environments. My work sits at the intersection of machine learning, natural language processing, predictive modeling, and applied analytics, with hands-on experience developing end-to-end projects from data preparation and model development to evaluation, visualization, and deployment.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a
+              class="btn btn-secondary"
+              href="https://github.com/Samarth-Kumar-Samal-Sam"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open GitHub profile"
+            >GitHub</a>
+            <a
+              class="btn btn-secondary"
+              href="https://www.linkedin.com/in/samarth-kumar-samal/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open LinkedIn profile"
+            >LinkedIn</a>
+          </div>
+          <div class="chip-wrap">
+            <span class="chip">Machine Learning</span>
+            <span class="chip">Natural Language Processing</span>
+            <span class="chip">Deep Learning</span>
+            <span class="chip">Predictive Analytics</span>
+            <span class="chip">PyTorch</span>
+          </div>
+        </div>
+
+        <div class="hero-card profile-card">
+          <div class="profile-image-wrap">
+            <img
+              src="profile_picture.png"
+              alt="Portrait of Samarth Kumar Samal"
+              class="profile-image"
+              width="220"
+              height="220"
+              loading="eager"
+            />
+          </div>
+          <h3>Portfolio Snapshot</h3>
+          <p class="tiny">A concise view of my academic training, engineering background, and applied data science work.</p>
+          <div class="hero-stats">
+            <div class="stat">
+              <h3>4</h3>
+              <p>Featured Projects</p>
+            </div>
+            <div class="stat">
+              <h3>2</h3>
+              <p>Technical Articles</p>
+            </div>
+            <div class="stat">
+              <h3>3+</h3>
+              <p>Deployed Analytics Apps</p>
+            </div>
+            <div class="stat">
+              <h3>2027</h3>
+              <p>Expected Graduation</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+          <p class="mini-note">
+            Focused on building practical machine learning systems with clear evaluation, reproducible workflows, and usable interfaces.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-subtitle">
+          My background combines graduate training in data science with prior engineering experience in enterprise infrastructure and deployment systems.
+        </p>
+        <div class="about-grid">
+          <div class="card">
+            <h3>Academic Background</h3>
+            <p>
+              I am pursuing an M.S. in Data Science at the University of Minnesota Twin Cities, where I am building depth in machine learning, deep learning, natural language processing, and applied statistical modeling. My coursework and projects emphasize both theory and implementation, including data preprocessing, model selection, evaluation, and experimental analysis.
+            </p>
+            <p>
+              I am especially interested in how machine learning methods can be translated into robust, interpretable, and practically useful systems.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Professional Background</h3>
+            <p>
+              Before graduate school, I worked as a Software Engineer at Dell Technologies in the Server Management Engineering team. I contributed to firmware update workflows, deployment diagnostics, system validation, and debugging across Windows and Linux server environments.
+            </p>
+            <p>
+              That experience strengthened my engineering discipline and gave me direct exposure to reliability, automation, and large-scale system workflows — foundations that now shape how I approach data science and machine learning projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-subtitle">
+          Core technical areas, tools, and frameworks I use across coursework, experimentation, and project development.
+        </p>
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Languages & Querying</h3>
+            <div class="chip-wrap">
+              <span class="chip">Python</span>
+              <span class="chip">SQL</span>
+              <span class="chip">R</span>
+              <span class="chip">C++</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Machine Learning & Modeling</h3>
+            <div class="chip-wrap">
+              <span class="chip">Supervised Learning</span>
+              <span class="chip">Unsupervised Learning</span>
+              <span class="chip">Deep Learning</span>
+              <span class="chip">Natural Language Processing</span>
+              <span class="chip">Feature Engineering</span>
+              <span class="chip">Model Evaluation</span>
+              <span class="chip">Hyperparameter Tuning</span>
+              <span class="chip">Time Series Forecasting</span>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Frameworks & Tools</h3>
+            <div class="chip-wrap">
+              <span class="chip">PyTorch</span>
+              <span class="chip">Scikit-learn</span>
+              <span class="chip">Hugging Face Transformers</span>
+              <span class="chip">NumPy</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">NLTK</span>
+              <span class="chip">Prophet</span>
+              <span class="chip">NeuralProphet</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">Plotly</span>
+              <span class="chip">Streamlit</span>
+              <span class="chip">Power BI</span>
+              <span class="chip">Git</span>
+              <span class="chip">GitHub</span>
+              <span class="chip">Docker</span>
+              <span class="chip">Linux</span>
+              <span class="chip">Jupyter Notebook</span>
+              <span class="chip">Google Cloud Platform</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">
+          Selected projects spanning NLP, forecasting, interactive analytics, and dashboard development.
+        </p>
+        <div class="project-grid">
+          <article class="card project-card">
+            <div class="project-title-row">
+              <div>
+                <h3>Tweet Sentiment Analysis Web Application</h3>
+                <p>
+                  An end-to-end NLP classification project built on the Sentiment140 dataset for large-scale tweet sentiment prediction. The application combines preprocessing, feature engineering, model comparison, and real-time inference through a deployed Streamlit interface.
+                </p>
+              </div>
+              <div class="project-num">01</div>
+            </div>
+            <div class="chip-wrap">
+              <span class="chip">NLP</span>
+              <span class="chip">Scikit-learn</span>
+              <span class="chip">TF-IDF</span>
+              <span class="chip">NLTK</span>
+              <span class="chip">Streamlit</span>
+            </div>
+            <ul>
+              <li>Developed a sentiment classification pipeline using the Sentiment140 dataset containing 1.6M tweets.</li>
+              <li>Applied preprocessing, tokenization, stopword removal, and vectorization for text feature extraction.</li>
+              <li>Implemented Logistic Regression and Naive Bayes models, achieving 84% accuracy with strong classification performance.</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="pill-link"
+                href="https://tweet-sentimental-analysis-sam.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Live Demo</a>
+              <a
+                class="pill-link"
+                href="https://github.com/Samarth-Kumar-Samal-Sam/Tweet-Sentimental-Analysis"
+                target="_blank"
+                rel="noopener noreferrer"
+              >GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-title-row">
+              <div>
+                <h3>Stock Market Prediction Platform</h3>
+                <p>
+                  A forecasting application that uses historical financial time-series data to model trends and generate future projections with Prophet and NeuralProphet. The project emphasizes data collection, model experimentation, evaluation, and interactive visualization.
+                </p>
+              </div>
+              <div class="project-num">02</div>
+            </div>
+            <div class="chip-wrap">
+              <span class="chip">Time Series Forecasting</span>
+              <span class="chip">Prophet</span>
+              <span class="chip">NeuralProphet</span>
+              <span class="chip">yFinance</span>
+              <span class="chip">Streamlit</span>
+            </div>
+            <ul>
+              <li>Collected and processed historical market data using the Yahoo Finance API for predictive modeling.</li>
+              <li>Built forecasting workflows with Prophet and NeuralProphet to analyze trends, seasonality, and future price behavior.</li>
+              <li>Evaluated performance using RMSE and MAE while presenting forecasts and confidence intervals through an interactive dashboard.</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="pill-link"
+                href="https://stock-market-prediction-sam.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Live Demo</a>
+              <a
+                class="pill-link"
+                href="https://github.com/Samarth-Kumar-Samal-Sam/Stock-Market-Prediction"
+                target="_blank"
+                rel="noopener noreferrer"
+              >GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-title-row">
+              <div>
+                <h3>COVID-19 Forecasting Dashboard</h3>
+                <p>
+                  A data-driven dashboard for visualizing global COVID-19 trends and forecasting future case trajectories. The project combines exploratory analysis, time-series modeling, and interactive visual storytelling in a single application.
+                </p>
+              </div>
+              <div class="project-num">03</div>
+            </div>
+            <div class="chip-wrap">
+              <span class="chip">Forecasting</span>
+              <span class="chip">Prophet</span>
+              <span class="chip">Plotly</span>
+              <span class="chip">Streamlit</span>
+              <span class="chip">Data Visualization</span>
+            </div>
+            <ul>
+              <li>Performed exploratory data analysis and preprocessing on pandemic datasets for forecasting workflows.</li>
+              <li>Generated forecasts across multiple horizons and evaluated performance using RMSE and MAPE.</li>
+              <li>Built interactive visualizations to support country-level exploration, trend interpretation, and uncertainty-aware analysis.</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="pill-link"
+                href="https://sam-covid-19-prediction.streamlit.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Live Demo</a>
+              <a
+                class="pill-link"
+                href="https://github.com/Samarth-Kumar-Samal-Sam/Covid-19-Prediction"
+                target="_blank"
+                rel="noopener noreferrer"
+              >GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-title-row">
+              <div>
+                <h3>Bank Loan Data Analysis Dashboard</h3>
+                <p>
+                  A dashboard and reporting project centered on borrower behavior, loan distribution, delinquency trends, and portfolio-level risk indicators. The work focuses on turning tabular financial data into clear analytical views for decision support.
+                </p>
+              </div>
+              <div class="project-num">04</div>
+            </div>
+            <div class="chip-wrap">
+              <span class="chip">Power BI</span>
+              <span class="chip">Excel</span>
+              <span class="chip">Dashboarding</span>
+              <span class="chip">Financial Analysis</span>
+            </div>
+            <ul>
+              <li>Analyzed borrower demographics, repayment behavior, and delinquency patterns across loan records.</li>
+              <li>Built interactive dashboards for portfolio distribution, risk indicators, and performance tracking.</li>
+              <li>Combined Excel-based data preparation with business-facing reporting to improve interpretability of financial trends.</li>
+            </ul>
+            <div class="project-links">
+              <a
+                class="pill-link"
+                href="https://github.com/Samarth-Kumar-Samal-Sam/Bank-Loan-Data"
+                target="_blank"
+                rel="noopener noreferrer"
+              >GitHub</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <h2 class="section-title">Academic Focus</h2>
+        <p class="section-subtitle">
+          Coursework and technical interests that currently shape my direction in machine learning and applied AI.
+        </p>
+        <div class="research-grid">
+          <div class="card">
+            <h3>Relevant Coursework</h3>
+            <ul class="simple-list">
+              <li>Machine Learning</li>
+              <li>Deep Learning</li>
+              <li>Natural Language Processing</li>
+              <li>Applied Multivariate Methods</li>
+              <li>Data Mining</li>
+              <li>Operating Systems</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Current Technical Interests</h3>
+            <ul class="simple-list">
+              <li>Machine Learning Model Development and Evaluation</li>
+              <li>Natural Language Processing and Text Classification</li>
+              <li>Predictive Analytics and Forecasting</li>
+              <li>Applied Deep Learning Workflows</li>
+              <li>Scalable and Reproducible Data Science Pipelines</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">
+          Professional experience that strengthened my engineering foundation before transitioning into graduate work in data science.
+        </p>
+        <div class="experience-grid">
+          <div class="card">
+            <h3>Software Engineer · Dell Technologies</h3>
+            <div class="timeline-meta">
+              <span class="pill-link">Aug 2022 – Jul 2023</span>
+              <span class="pill-link">Server Management Engineering Team</span>
+            </div>
+            <p>
+              At Dell Technologies, I supported enterprise deployment workflows and firmware update reliability in server environments. My work involved diagnosing deployment issues, validating update behavior, and contributing to modules used within automated infrastructure management pipelines.
+            </p>
+            <ul class="simple-list">
+              <li>Analyzed firmware logs, deployment diagnostics, and system telemetry to resolve 25+ enterprise JIRA issues.</li>
+              <li>Developed and maintained USBNIC-related update components within enterprise deployment workflows.</li>
+              <li>Performed debugging and validation across Windows and Linux server environments while collaborating with development, QA, and DevOps teams.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Why this background matters</h3>
+            <p>
+              My engineering experience shaped how I think about technical work: not just as model building, but as designing systems that are reliable, testable, and useful in practice. It also gave me experience working across teams, understanding production constraints, and approaching problems with a debugging mindset.
+            </p>
+            <p>
+              That perspective continues to influence how I build data science projects today — with attention to reproducibility, evaluation, deployment, and clear communication of results.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leadership">
+      <div class="container">
+        <h2 class="section-title">Leadership</h2>
+        <p class="section-subtitle">
+          Leadership experiences that strengthened my coordination, communication, and team collaboration skills.
+        </p>
+        <div class="leadership-grid">
+          <div class="card">
+            <h3>Best Alumni Coordinator · OUTR</h3>
+            <div class="timeline-meta">
+              <span class="pill-link">2019 – 2022</span>
+              <span class="pill-link">Odisha University of Technology and Research</span>
+            </div>
+            <ul class="simple-list">
+              <li>Supported alumni engagement initiatives and communication between alumni and the student community.</li>
+              <li>Helped coordinate events, networking opportunities, and outreach activities.</li>
+              <li>Received recognition as Best Alumni Coordinator for leadership and contribution.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Service Head · Entrepreneurship Cell</h3>
+            <div class="timeline-meta">
+              <span class="pill-link">2020 – 2021</span>
+              <span class="pill-link">OUTR</span>
+            </div>
+            <ul class="simple-list">
+              <li>Led student-facing initiatives and supported execution of entrepreneurship-focused events.</li>
+              <li>Worked with teams on coordination, planning, and operational support.</li>
+              <li>Encouraged student participation in innovation and startup-oriented activities.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog">
+      <div class="container">
+        <h2 class="section-title">Technical Writing</h2>
+        <p class="section-subtitle">
+          A few articles where I share project-based learning in NLP, forecasting, and interactive analytics.
+        </p>
+        <div class="blog-grid">
+          <article class="card">
+            <h3>Detecting Emotions in Text Using NLP and Streamlit</h3>
+            <p>
+              A project-based article on using natural language processing and machine learning workflows to classify emotions in text through an interactive application.
+            </p>
+            <div class="project-links">
+              <a
+                class="pill-link"
+                href="https://medium.com/@samarthsamal2000/an-innovative-approach-to-detect-emotions-in-text-nlp-and-streamlit-working-together-f4144f63f95c"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Read Article</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Visualizing Coronavirus Trends with Streamlit and Prophet</h3>
+            <p>
+              An article on combining time-series forecasting with interactive visualizations to explore and communicate pandemic trends effectively.
+            </p>
+            <div class="project-links">
+              <a
+                class="pill-link"
+                href="https://medium.com/@samarthsamal2000/visualizing-coronavirus-tendencies-with-streamlit-and-prophet-e0660ef77cec"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Read Article</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="container">
+        <h2 class="section-title">Resume</h2>
+        <p class="section-subtitle">
+          Download my resume for a concise summary of my education, technical skills, projects, and professional experience.
+        </p>
+        <div class="card resume-box">
+          <div>
+            <h3>Resume PDF</h3>
+            <p>
+              For a structured overview of my background and project work, you can download the latest version of my resume below.
+            </p>
+          </div>
+          <a
+            class="btn btn-primary"
+            href="Samarth_Kumar_Samal_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Download Resume</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-subtitle">
+          I am open to internship opportunities, research collaborations, and conversations related to machine learning, data science, and applied analytics.
+        </p>
+        <div class="contact-grid">
+          <div class="card">
+            <h3>Get in touch</h3>
+            <div class="contact-list">
+              <a class="pill-link" href="mailto:samal026@umn.edu">samal026@umn.edu</a>
+              <a
+                class="pill-link"
+                href="https://www.linkedin.com/in/samarth-kumar-samal/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >LinkedIn</a>
+              <a
+                class="pill-link"
+                href="https://github.com/Samarth-Kumar-Samal-Sam"
+                target="_blank"
+                rel="noopener noreferrer"
+              >GitHub</a>
+            </div>
+          </div>
+          <div class="card">
+            <h3>Open to</h3>
+            <div class="chip-wrap">
+              <span class="chip">Data Science Internships</span>
+              <span class="chip">Machine Learning Projects</span>
+              <span class="chip">Research Collaboration</span>
+              <span class="chip">Applied AI Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Samarth Kumar Samal. Built for GitHub Pages.
+    </div>
+  </footer>
+
+  <a href="#home" class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</a>
+
+  <script>
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".menu a");
+    const scrollTopBtn = document.getElementById("scrollTop");
+    const yearEl = document.getElementById("year");
+
+    yearEl.textContent = new Date().getFullYear();
+
+    const setActiveLink = () => {
+      const scrollY = window.pageYOffset;
+
+      sections.forEach((section) => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 120;
+        const sectionId = section.getAttribute("id");
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLinks.forEach((link) => link.classList.remove("active"));
+          const activeLink = document.querySelector('.menu a[href="#' + sectionId + '"]');
+          if (activeLink) activeLink.classList.add("active");
+        }
+      });
+    };
+
+    window.addEventListener("scroll", () => {
+      setActiveLink();
+
+      if (window.scrollY > 500) {
+        scrollTopBtn.classList.add("show");
+      } else {
+        scrollTopBtn.classList.remove("show");
+      }
+    });
+
+    setActiveLink();
+
+    const canvas = document.getElementById("bg-canvas");
+    const ctx = canvas.getContext("2d");
+
+    let width = 0;
+    let height = 0;
+    let particles = [];
+    const mouse = {
+      x: null,
+      y: null,
+      radius: 140
+    };
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initParticles();
+    }
+
+    class Particle {
+      constructor() {
+        this.reset();
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2.2 + 0.8;
+        this.alpha = Math.random() * 0.5 + 0.2;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = this.x - mouse.x;
+          const dy = this.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < mouse.radius && dist > 0) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x += (dx / dist) * force * 1.8;
+            this.y += (dy / dist) * force * 1.8;
+          }
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(210, 225, 255, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      const count = Math.min(120, Math.floor((width * height) / 14000));
+      particles = [];
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function connectParticles() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            const opacity = 1 - dist / 120;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(140, 170, 255, ${opacity * 0.18})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      for (const particle of particles) {
+        particle.update();
+        particle.draw();
+      }
+
+      connectParticles();
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    window.addEventListener("mouseleave", () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+
+    resizeCanvas();
+    animate();
+  </script>
+</body>
+</html>
